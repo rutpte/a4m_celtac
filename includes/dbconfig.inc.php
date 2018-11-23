@@ -9,7 +9,7 @@ define('DB_USER', 'postgres');
 
 //if (strtoupper(substr(php_uname('n'), 0, 3)) === 'PTE') {
 //define('DB_PASS', 'pgpteadmin');
-define('DB_PASS', '1234');
+define('DB_PASS', 'pgpteadmin');
 
 //*------------------------------------------------------------------------------
 

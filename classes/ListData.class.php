@@ -31,7 +31,6 @@ class ListData extends DBConnection
 			OR (lower(phone) LIKE LOWER('%{$query}%'))
 			OR (lower(mphone) LIKE LOWER('%{$query}%'))
 			OR (lower(email) LIKE LOWER('%{$query}%'))
-			OR (lower(amount) LIKE LOWER('%{$query}%'))
 			OR (lower(currency) LIKE LOWER('%{$query}%'))
 			OR (lower(payment_by) LIKE LOWER('%{$query}%'))
 			OR (lower(payment_method) LIKE LOWER('%{$query}%'))
@@ -54,7 +53,6 @@ class ListData extends DBConnection
 			OR (lower(phone) LIKE LOWER('%{$query}%'))
 			OR (lower(mphone) LIKE LOWER('%{$query}%'))
 			OR (lower(email) LIKE LOWER('%{$query}%'))
-			OR (lower(amount) LIKE LOWER('%{$query}%'))
 			OR (lower(currency) LIKE LOWER('%{$query}%'))
 			OR (lower(payment_by) LIKE LOWER('%{$query}%'))
 			OR (lower(payment_method) LIKE LOWER('%{$query}%'))
@@ -116,9 +114,9 @@ class ListData extends DBConnection
 	}
 	//------------------------------------------------------------------------
 	
-    public function insert_data($data)
+    public function insert_data($post)
     {
-		//var_dump($data);exit;
+		//-> var_dump($post);exit;
 		$sql ="
 			insert into customer
 			(       _no 				
@@ -142,25 +140,25 @@ class ListData extends DBConnection
                     ,remark
 			)
 			values(
-				'{$data['_no_data']}',
-				'{$data['title_data']}',
-				'{$data['name_data']}',
-				'{$data['surname_data']}',
-				'{$data['address1_data']}',
-				'{$data['address2_data']}',
-				'{$data['region_data']}',
-				'{$data['phone_data']}',
-				'{$data['mphone_data']}',
-				'{$data['email_data']}',
-				'{$data['amount_data']}',
-				'{$data['currency_data']}',
-				'{$data['registration_date_data']}',
-				'{$data['payment_date_data']}',
-				'{$data['payment_by_data']}',
-				'{$data['payment_method_data']}',
-				'{$data['payment_process_data']}',
-				'{$data['status_data']}',
-				'{$data['remark_data']}'
+				'{$post['_no_data']}',
+				'{$post['title_data']}',
+				'{$post['name_data']}',
+				'{$post['surname_data']}',
+				'{$post['address1_data']}',
+				'{$post['address2_data']}',
+				'{$post['region_data']}',
+				'{$post['phone_data']}',
+				'{$post['mphone_data']}',
+				'{$post['email_data']}',
+				'{$post['amount_data']}',
+				'{$post['currency_data']}',
+				'{$post['registration_date_data']}',
+				'{$post['payment_date_data']}',
+				'{$post['payment_by_data']}',
+				'{$post['payment_method_data']}',
+				'{$post['payment_process_data']}',
+				'{$post['status_data']}',
+				'{$post['remark_data']}'
 			)
 		";
 		//echo '<pre>'; echo $sql; exit;

@@ -145,7 +145,7 @@ Celtac_class.prototype.init_form_customer = function () {
                 name        : 'email_data'
             },{
                 id          : 'amount_data',
-                xtype       : 'textfield',
+                xtype       : 'numberfield',
                 fieldLabel  : 'Amount',
 				width       : 200,
 				maxLength	: 10,
@@ -161,6 +161,7 @@ Celtac_class.prototype.init_form_customer = function () {
                 id          : 'registration_date_data',
                 xtype       : 'datefield',
 				value		: new Date(),
+				format		: 'd/m/Y',
                 fieldLabel  : 'Registration_date*',
 				width       : 200,
 				//maxLength	: 2,
@@ -169,6 +170,7 @@ Celtac_class.prototype.init_form_customer = function () {
                 id          : 'payment_date_data',
                 xtype       : 'datefield',
 				value		: new Date(),
+				format		: 'd/m/Y',
                 fieldLabel  : 'Due_date*',
 				width       : 200,
 				//maxLength	: 2,

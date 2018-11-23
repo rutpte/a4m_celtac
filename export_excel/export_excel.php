@@ -12,7 +12,7 @@ $dsn = "pgsql:host=localhost; dbname=a4m_celtac;";
 $file_name 	= 'export_list_personal';
 $title 		= 'personal';
 try {
-    $pdo = new PDO($dsn, "postgres", "1234");
+    $pdo = new PDO($dsn, "postgres", "pgpteadmin");
 } catch(PDOException $e) {
     echo 'Connection failed: <pre>' .  $e->getMessage();
 }

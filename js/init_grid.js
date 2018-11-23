@@ -16,8 +16,14 @@ Celtac_class.prototype.init_grid = function () {
 		Ext.getCmp('email_data').setValue(data_row.email);
 		Ext.getCmp('amount_data').setValue(data_row.amount);
 		Ext.getCmp('currency_data').setValue(data_row.currency);
-		Ext.getCmp('registration_date_data').setValue(data_row.registration_date);
-		Ext.getCmp('payment_date_data').setValue(data_row.payment_date);
+		var reg_timesp = data_row.registration_date.split(" ");
+		var registration_date = reg_timesp[0];
+		
+		var payment_timesp = data_row.payment_date.split(" ");
+		var payment_date = payment_timesp[0];
+		//debugger;
+		Ext.getCmp('registration_date_data').setValue(registration_date);
+		Ext.getCmp('payment_date_data').setValue(payment_date);
 		Ext.getCmp('payment_by_data').setValue(data_row.payment_by);
 		Ext.getCmp('payment_method_data').setValue(data_row.payment_method);
 		Ext.getCmp('payment_process_data').setValue(data_row.payment_process);
