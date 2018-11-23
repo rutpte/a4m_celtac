@@ -117,6 +117,26 @@ class ListData extends DBConnection
     public function insert_data($post)
     {
 		 //var_dump($post);exit;
+		$_no_data 				= str_replace("'","\'",$post['_no_data']);
+		$title_data 			= str_replace("'","\'",$post['title_data']);
+		$name_data 				= str_replace("'","\'",$post['name_data']);
+		$surname_data 			= str_replace("'","\'",$post['surname_data']);
+		$address1_data 			= str_replace("'","\'",$post['address1_data']);
+		$address2_data 			= str_replace("'","\'",$post['address2_data']);
+		$region_data 			= str_replace("'","\'",$post['region_data']);
+		$phone_data 			= str_replace("'","\'",$post['phone_data']);
+		$mphone_data 			= str_replace("'","\'",$post['mphone_data']);
+		$email_data 			= str_replace("'","\'",$post['email_data']);
+		$amount_data 			= $post['amount_data'];
+		$currency_data 			= str_replace("'","\'",$post['currency_data']);
+		//$registration_date_data = TO_DATE('{$post['registration_date_data']}', 'DD/MM/YYYY');
+		//$payment_date_data 		= TO_DATE('{$post['payment_date_data']}', 'DD/MM/YYYY');
+		$payment_by_data 		= str_replace("'","\'",$post['payment_by_data']);
+		$payment_method_data 	= str_replace("'","\'",$post['payment_method_data']);
+		$payment_process_data 	= str_replace("'","\'",$post['payment_process_data']);
+		$status_data 			= $post['status_data'];
+		$remark_data 			= str_replace("'","\'",$post['remark_data']);
+		//---------------------------------------------------------------------
 		$sql ="
 			insert into customer
 			(       _no 				
@@ -140,25 +160,25 @@ class ListData extends DBConnection
                     ,remark
 			)
 			values(
-				'{$post['_no_data']}',
-				'{$post['title_data']}',
-				'{$post['name_data']}',
-				'{$post['surname_data']}',
-				'{$post['address1_data']}',
-				'{$post['address2_data']}',
-				'{$post['region_data']}',
-				'{$post['phone_data']}',
-				'{$post['mphone_data']}',
-				'{$post['email_data']}',
-				{$post['amount_data']},
-				'{$post['currency_data']}',
+				'{$_no_data}',
+				'{$title_data}',
+				'{$name_data}',
+				'{$surname_data}',
+				'{$address1_data}',
+				'{$address2_data}',
+				'{$region_data}',
+				'{$phone_data}',
+				'{$mphone_data}',
+				'{$email_data}',
+				{$amount_data},
+				'{$currency_data}',
 				TO_DATE('{$post['registration_date_data']}', 'DD/MM/YYYY'),
 				TO_DATE('{$post['payment_date_data']}', 'DD/MM/YYYY'),
-				'{$post['payment_by_data']}',
-				'{$post['payment_method_data']}',
-				'{$post['payment_process_data']}',
-				'{$post['status_data']}',
-				'{$post['remark_data']}'
+				'{$payment_by_data}',
+				'{$payment_method_data}',
+				'{$payment_process_data}',
+				'{$status_data}',
+				'{$remark_data}'
 			)
 		";
 		//echo '<pre>'; echo $sql; exit;
@@ -180,29 +200,46 @@ class ListData extends DBConnection
 	
     public function update_data($data)
     {
+		$_no_data 				= str_replace("'","\'",$data['_no_data']);
+		$title_data 			= str_replace("'","\'",$data['title_data']);
+		$name_data 				= str_replace("'","\'",$data['name_data']);
+		$surname_data 			= str_replace("'","\'",$data['surname_data']);
+		$address1_data 			= str_replace("'","\'",$data['address1_data']);
+		$address2_data 			= str_replace("'","\'",$data['address2_data']);
+		$region_data 			= str_replace("'","\'",$data['region_data']);
+		$phone_data 			= str_replace("'","\'",$data['phone_data']);
+		$mphone_data 			= str_replace("'","\'",$data['mphone_data']);
+		$email_data 			= str_replace("'","\'",$data['email_data']);
+		$amount_data 			= $data['amount_data'];
+		$currency_data 			= str_replace("'","\'",$data['currency_data']);
+		$payment_by_data 		= str_replace("'","\'",$data['payment_by_data']);
+		$payment_method_data 	= str_replace("'","\'",$data['payment_method_data']);
+		$payment_process_data 	= str_replace("'","\'",$data['payment_process_data']);
+		$status_data 			= $data['status_data'];
+		$remark_data 			= str_replace("'","\'",$data['remark_data']);
 
 		$sql ="
 			update customer
 			set 
-                    _no 				= '{$data['_no_data']}',
-                    title				= '{$data['title_data']}',
-                    name				= '{$data['name_data']}',
-                    surname				= '{$data['surname_data']}',
-                    address1			= '{$data['address1_data']}',
-                    address2			= '{$data['address2_data']}',
-                    region				= '{$data['region_data']}',
-                    phone				= '{$data['phone_data']}',
-                    mphone				= '{$data['mphone_data']}',
-                    email				= '{$data['email_data']}',
-                    amount				= '{$data['amount_data']}',
-                    currency			= '{$data['currency_data']}',
+                    _no 				= '{$_no_data}',
+                    title				= '{$title_data}',
+                    name				= '{$name_data}',
+                    surname				= '{$surname_data}',
+                    address1			= '{$address1_data}',
+                    address2			= '{$address2_data}',
+                    region				= '{$region_data}',
+                    phone				= '{$phone_data}',
+                    mphone				= '{$mphone_data}',
+                    email				= '{$email_data}',
+                    amount				= '{$amount_data}',
+                    currency			= '{$currency_data}',
                     registration_date	= TO_DATE('{$data['registration_date_data']}', 'DD/MM/YYYY'),
                     payment_date		= TO_DATE('{$data['payment_date_data']}', 'DD/MM/YYYY'),
-                    payment_by			= '{$data['payment_by_data']}',
-                    payment_method		= '{$data['payment_method_data']}',
-                    payment_process		= '{$data['payment_process_data']}',
-                    status				= '{$data['status_data']}',
-                    remark				= '{$data['remark_data']}'
+                    payment_by			= '{$payment_by_data}',
+                    payment_method		= '{$payment_method_data}',
+                    payment_process		= '{$payment_process_data}',
+                    status				= '{$status_data}',
+                    remark				= '{$remark_data}'
 			where id = '{$data['id_data']}'
 		";
 		
