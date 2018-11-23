@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         break;
         case "logout" :
 			//--> destroy all seesion.
+			//echo 'logout'; exit;
 			session_destroy();
         break;
         // --> if don't post "q" parameter

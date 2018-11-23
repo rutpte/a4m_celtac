@@ -1,6 +1,6 @@
 <?php 
-	//echo "close by admin";
-	//exit;
+require dirname(__FILE__) . '/includes/init.inc.php';
+ if (isset($_SESSION['email'])) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,3 +49,9 @@
     
 </body>
 </html>
+ <? } else {
+		
+		header("Location: http://" . $_SERVER['HTTP_HOST'] ."".PROJ_NAME. "/login.html");
+	} 
+
+?>

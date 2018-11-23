@@ -10,6 +10,9 @@ div.ui-datepicker{
 .icon-excel {
     background-image: url("../images/png-icons/summary-16x16.png") !important;
 }
+.icon-exit {
+    background-image: url("../images/png-icons/exit-16x16.png") !important;
+}
 
 
 #loading-mask {

@@ -1,5 +1,6 @@
 <?php
 // Set header charset.
+require_once dirname(__FILE__) . '/dbconfig.inc.php';
 header('Content-Type: text/html; charset=utf-8');
 
 // Include database configuration

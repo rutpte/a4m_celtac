@@ -379,6 +379,33 @@ Celtac_class.prototype.init_grid = function () {
 								});
 				}
 			}
+			,"->"
+            ,{
+				//--> add new customer
+				xtype       : 'button',
+				iconCls: 'icon-exit',
+				handler : function () {
+					//--> logout.
+					$.ajax({
+						url: "authen.php",
+						dataType: 'text', // Notice! JSONP <-- P (lowercase)
+						method : 'POST',
+						data: { 
+							"q"              : "logout"
+						},
+						type: "GET",
+						success:function(response){
+							//console.debug('response : ',response);
+							
+							//refresh a page.
+							location.reload();
+						},
+						error:function(response){
+							console.debug(response);
+						}      
+					});
+				}
+			}
         ],
         // paging bar on the bottom
         bbar: new Ext.PagingToolbar({
