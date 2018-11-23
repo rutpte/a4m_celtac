@@ -278,7 +278,7 @@ Celtac_class.prototype.init_form_customer = function () {
 										//--> load grid with old data before
 										celtac.reload_grid();
 										
-										//celtac.win_upload.destroy();
+										celtac.win_upload.destroy();
 									} else {
 										celtac.alert('update','can not complete','ERROR');
 									}

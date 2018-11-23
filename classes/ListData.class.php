@@ -161,7 +161,7 @@ class ListData extends DBConnection
 				'{$post['remark_data']}'
 			)
 		";
-		echo '<pre>'; echo $sql; exit;
+		//echo '<pre>'; echo $sql; exit;
 		$sth = $this->db->prepare($sql);
 		try {
 			
@@ -196,8 +196,8 @@ class ListData extends DBConnection
                     email				= '{$data['email_data']}',
                     amount				= '{$data['amount_data']}',
                     currency			= '{$data['currency_data']}',
-                    registration_date	= '{$data['registration_date_data']}',
-                    payment_date		= '{$data['payment_date_data']}',
+                    registration_date	= TO_DATE('{$data['registration_date_data']}', 'DD/MM/YYYY'),
+                    payment_date		= TO_DATE('{$data['payment_date_data']}', 'DD/MM/YYYY'),
                     payment_by			= '{$data['payment_by_data']}',
                     payment_method		= '{$data['payment_method_data']}',
                     payment_process		= '{$data['payment_process_data']}',
@@ -206,7 +206,7 @@ class ListData extends DBConnection
 			where id = '{$data['id_data']}'
 		";
 		
-		echo '<pre>'; echo $sql; exit;
+		//echo '<pre>'; echo $sql; exit;
 		$sth = $this->db->prepare($sql);
 		try {
 			
