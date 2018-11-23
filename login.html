@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="logo.jpg">
+
+		<title>celtac order</title>
+
+		<!-- Bootstrap core CSS -->
+		<!-- <link href="libs/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+		<!-- <script type='text/javascript' src='js/js_index_src.js'></script> -->
+		
+		<script type='text/javascript' src='libs/jquery/jquery-1.10.2.min.js'></script>
+		<script type='text/javascript' src='libs/bootstrap/bootstrap.min.js'></script>
+
+		
+
+		<!-- Custom styles for this template -->
+		<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="styles/css/signin.css" rel="stylesheet">
+
+	</head>
+
+	<body class="text-center">
+
+		<form class="form-signin" id="login_form">
+			<img class="mb-4" src="logo.jpg" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+			<div><span style="color:#d14" id="error_login_info"></span></div>
+			<label for="inputEmail" class="sr-only">Email address</label>
+			<input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input type="password" id="password" class="form-control" placeholder="Password" required>
+			
+			
+			<div class="checkbox mb-3">
+				<label>
+					<input id="remember" type="checkbox" value="remember-me"> Remember me
+				</label>
+			</div>
+			
+			<!-- <button class="btn btn-lg btn-primary btn-block" id="login"type="submit">Sign in</button>-->
+			<button class="btn btn-lg btn-primary btn-block" type="button" id="sing_in">Sign in</button>
+			<p class="mt-5 mb-3 text-muted">&copy; Celtac Co.,Ltd.</p>
+			
+		</form>
+
+		<script>
+			$( document ).ready(function() {
+				//--> part 1. set auto complete by cookie.
+				var remember = $.cookie('remember');
+				if (remember == 'true') {
+				
+					var email = $.cookie('email');
+					var password = $.cookie('password');
+					// autofill the fields
+					if(typeof(email) != "undefined"){
+						$('#email').val(email);
+						$('#password').val(password);
+					}
+
+				}
+
+				//--> part 2. keep user pass word in cookie.
+				$("#sing_in").click(function() {
+					console.log("submited");
+					//--> keep cookie.
+					if ($('#remember').is(':checked')) {
+						var email = $('#email').val();
+						var password = $('#password').val();
+
+						// set cookies to expire in 14 days
+						$.cookie('email', email, { expires: 14 });
+						$.cookie('password', password, { expires: 14 });
+						$.cookie('remember', true, { expires: 14 });                
+					}
+					else
+					{
+						// reset cookies
+						$.cookie('email', null);
+						$.cookie('password', null);
+						$.cookie('remember', null);
+					}
+				});
+				//-----------------------------------------------------------
+				$("#sing_in").click(function() {
+					
+					console.log("login");
+					//debugger;
+					var email 		= $('#email').val();
+					var password 	= $('#password').val();
+					//debugger;
+					//--> ajack create session.
+					
+
+					$.ajax({
+						url: "authen.php",
+						dataType: 'text', // Notice! JSONP <-- P (lowercase)
+						method : 'POST',
+						data: { 
+							"q"              : "login",
+							"email"          : email,
+							"passwd"         : password
+						},
+						type: "GET",
+						success:function(response){
+							//console.debug('response : ',response);
+							//debugger;
+							var obj_response = jQuery.parseJSON(response);
+							//debugger;
+							//console.debug('respont : ',respont);
+							if (obj_response.success) {
+								//debugger;
+								//celtac.g_var.user = obj_response;
+								window.location = window.location.origin+ "/" + 'a4m_celtac' + "/index.php";
+							} else {
+								//console.log(obj_response.msg);
+								$("#error_login_info").text(obj_response.msg);
+							}
+						},
+						error:function(response){
+							console.debug(response);
+						}      
+					});
+				});
+			});
+		</script>
+	</body>
+	
+</html>
