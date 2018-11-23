@@ -25,16 +25,29 @@ class Authentication extends DBConnection
                 stf.*
             FROM staff stf 
             WHERE 1=1
-			AND email = :username 
-			AND passwd = :passwd
+			AND email = '{$username}'
+			AND passwd = '{$passwd}'
 			AND is_active = 't'
         ";
 		
-        //echo '<pre>'.$strSQL; exit;
+		/* //debug.
+        $strSQL = "
+            SELECT 
+                stf.*
+            FROM staff stf 
+            WHERE 1=1
+			AND email = '{$username}'
+			AND passwd = '{$passwd}'
+			AND is_active = 't'
+        ";
+        echo '<pre>'.$strSQL; exit;
+		*/
+		
+		
         $sth = $this->db->prepare($strSQL);
 
-        $sth->bindValue(':username', $username, PDO::PARAM_STR);
-        $sth->bindValue(':passwd', $passwd, PDO::PARAM_STR);
+		//$sth->bindValue(':username', "'".$username."'", PDO::PARAM_STR);
+        //$sth->bindValue(':passwd', "'".$passwd."'", PDO::PARAM_STR);
         $sth->execute();
 //             var_dump($sth, $this->db->errorInfo());
 //             $sth->debugDumpParams();

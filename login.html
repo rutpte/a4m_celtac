@@ -111,7 +111,7 @@
 							//console.debug('response : ',response);
 							//debugger;
 							var obj_response = jQuery.parseJSON(response);
-							//debugger;
+							debugger;
 							//console.debug('respont : ',respont);
 							if (obj_response.success) {
 								//debugger;
@@ -123,7 +123,7 @@
 							}
 						},
 						error:function(response){
-							console.debug(response);
+							console.debug("error : "+response);
 						}      
 					});
 				});
