@@ -116,7 +116,7 @@ class ListData extends DBConnection
 	
     public function insert_data($post)
     {
-		//-> var_dump($post);exit;
+		 //var_dump($post);exit;
 		$sql ="
 			insert into customer
 			(       _no 				
@@ -150,10 +150,10 @@ class ListData extends DBConnection
 				'{$post['phone_data']}',
 				'{$post['mphone_data']}',
 				'{$post['email_data']}',
-				'{$post['amount_data']}',
+				{$post['amount_data']},
 				'{$post['currency_data']}',
-				'{$post['registration_date_data']}',
-				'{$post['payment_date_data']}',
+				TO_DATE('{$post['registration_date_data']}', 'DD/MM/YYYY'),
+				TO_DATE('{$post['payment_date_data']}', 'DD/MM/YYYY'),
 				'{$post['payment_by_data']}',
 				'{$post['payment_method_data']}',
 				'{$post['payment_process_data']}',
@@ -161,7 +161,7 @@ class ListData extends DBConnection
 				'{$post['remark_data']}'
 			)
 		";
-		//echo '<pre>'; echo $sql; exit;
+		echo '<pre>'; echo $sql; exit;
 		$sth = $this->db->prepare($sql);
 		try {
 			
@@ -206,7 +206,7 @@ class ListData extends DBConnection
 			where id = '{$data['id_data']}'
 		";
 		
-		//echo '<pre>'; echo $sql; exit;
+		echo '<pre>'; echo $sql; exit;
 		$sth = $this->db->prepare($sql);
 		try {
 			
